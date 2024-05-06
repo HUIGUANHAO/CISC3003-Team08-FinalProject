@@ -86,7 +86,7 @@ session_start();
 
     <!-- INTRODUCTION -->
     <section>
-        <form action="../PHP/post_rent.php" method="post">
+        <form action="../PHP/confirm_rent.php" method="post">
         <div class="introduce_box">
             <div class="big_title">
                 <p class="house_title">幸福花园的二居室</p>

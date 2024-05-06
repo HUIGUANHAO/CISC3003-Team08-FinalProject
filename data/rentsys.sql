@@ -13,11 +13,8 @@
 
  Date: 01/07/2022 18:09:08
 */
-
 CREATE DATABASE IF NOT EXISTS rentsys;
-
 USE rentsys;
-
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -49,22 +46,27 @@ CREATE TABLE `deal`  (
   `admin_id` int(8) NOT NULL,
   `house_id` int(8) NOT NULL,
   `deal_book` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '../data/images/three.png',
+  `transaction_certificate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `status_id` int(8) DEFAULT NULL,
+  `payment_status` int(8) DEFAULT NULL,
   PRIMARY KEY (`deal_id`) USING BTREE,
   INDEX `landlord_id`(`landlord_id`) USING BTREE,
   INDEX `tenant_id`(`tenant_id`) USING BTREE,
   INDEX `admin_id`(`admin_id`) USING BTREE,
-  INDEX `house_id`(`house_id`) USING BTREE
+  INDEX `house_id`(`house_id`) USING BTREE,
+  INDEX `status_id`(`status_id`) USING BTREE,
+  INDEX `payment_status`(`payment_status`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 88880012 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of deal
 -- ----------------------------
-INSERT INTO `deal` VALUES (88880001, 22220007, 99990002, 10100001, 11110001, '../data/images/three.png');
-INSERT INTO `deal` VALUES (88880002, 22220005, 99990004, 10100001, 11110002, '../data/images/three.png');
-INSERT INTO `deal` VALUES (88880003, 22220003, 99990001, 10100001, 11110004, '../data/images/three.png');
-INSERT INTO `deal` VALUES (88880004, 22220006, 99990005, 10100002, 11110003, '../data/images/three.png');
-INSERT INTO `deal` VALUES (88880005, 22220002, 99990007, 10100002, 11110005, '../data/images/three.png');
-INSERT INTO `deal` VALUES (88880006, 22220004, 99990006, 10100003, 11110007, '../data/images/three.png');
+INSERT INTO `deal` VALUES (88880001, 22220007, 99990002, 10100001, 11110001, '../data/images/three.png', NULL, 1, 1);
+INSERT INTO `deal` VALUES (88880002, 22220005, 99990004, 10100001, 11110002, '../data/images/three.png', NULL, 2, 2);
+INSERT INTO `deal` VALUES (88880003, 22220003, 99990001, 10100001, 11110004, '../data/images/three.png', NULL, 3, 3);
+INSERT INTO `deal` VALUES (88880004, 22220006, 99990005, 10100002, 11110003, '../data/images/three.png', NULL, 4, 4);
+INSERT INTO `deal` VALUES (88880005, 22220002, 99990007, 10100002, 11110005, '../data/images/three.png', NULL, 1, 1);
+INSERT INTO `deal` VALUES (88880006, 22220004, 99990006, 10100003, 11110007, '../data/images/three.png', NULL, 2, 2);
 
 -- ----------------------------
 -- Table structure for house
@@ -125,6 +127,28 @@ INSERT INTO `landlord` VALUES (22220005, '淋雨一直走', '女', '../data/imag
 INSERT INTO `landlord` VALUES (22220006, '！！！', '女', '../data/images/22220006.png', 17399995299, '17399995299@163.com', '广东省惠州市惠东县平山新平大道629号', 'fan_7023');
 INSERT INTO `landlord` VALUES (22220007, '邻里的猫', '男', '../data/images/22220007.png', 19877774377, '19877774377@163.com', '广东省惠州市龙门县龙门城区广河高速', 's_778899');
 INSERT INTO `landlord` VALUES (22220009, 'chen', '男', '../data/images/photo.png', 15912344321, '12342@qq.com', '惠州市惠城区', 'qwe123_');
+
+-- ----------------------------
+-- Table structure for Transaction_Status
+-- ----------------------------
+DROP TABLE IF EXISTS `Transaction_Status`;
+CREATE TABLE `Transaction_Status` (
+  `status_id` int(8) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`status_id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+INSERT INTO `Transaction_Status` (description) VALUES ('Initiated'), ('In Progress'), ('Completed'), ('Cancelled');
+
+-- ----------------------------
+-- Table structure for Payment_Status
+-- ----------------------------
+DROP TABLE IF EXISTS `Payment_Status`;
+CREATE TABLE `Payment_Status` (
+  `status_id` int(8) NOT NULL AUTO_INCREMENT,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`status_id`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+INSERT INTO `Payment_Status` (description) VALUES ('Pending'), ('Paid'), ('Failed'), ('Refunded');
 
 -- ----------------------------
 -- Table structure for orders
