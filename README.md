@@ -2,6 +2,7 @@
  Github Repo:<https://github.com/HUIGUANHAO/CISC3003-Team08-FinalProject>
 
 
+
 Hello, we are Team08: Pair02&03&23
 Our team number:
 >* DC126711 HUI GUANHAO
@@ -13,6 +14,8 @@ Our team number:
 
 
 
+
+
 Our team project is aiming to build a Macau House Rental Platform, an innovative digital solution designed to simplify the property rental process in Macau.  The platform bridges communication between landlords and tenants by providing a range of services to landlords and tenants, simplifying the transaction process. We specialize in developing rental management platforms that allow users to seamlessly manage rental activities through a web interface.  Our platform supports a variety of features, including user authentication, property listings, and account management.  Users can log in or register, view rental listings, adjust filters, and manage their profiles.   
   >I will use the following tools and languages to assist in the development:
   >- HTML
@@ -21,6 +24,9 @@ Our team project is aiming to build a Macau House Rental Platform, an innovative
   >- jQuery
   >- PHP
   >- MySQL
+
+
+
 
 
 # Database Deployment
@@ -47,6 +53,9 @@ After that we set the password of the user in conn.php file so that we can compl
 ```
 
 Now we can successfully link to the database!
+
+
+
 
 
 # Main function
